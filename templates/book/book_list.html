@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+    <br>
+    <section class="jumbotron text-center" style="background-image: url('https://img.etimg.com/thumb/msid-67619899,width-640,resizemode-4,imgsize-134956/coincidence-or-what.jpg');">
+        <div class="container" >
+            <br>
+            <p>
+                <!-- Search form -->
+                <form>
+                    <input class="form-control" type="text" placeholder="Title, Author" aria-label="Search"> 
+                    <button class="btn btn-primary my-2">Search</button>
+                </form>
+            </p>
+        </div>
+        <br>
+    </section>
+    <button class="btn btn-primary my-2">Buddhism</button>
+    <button class="btn btn-primary my-2">Finance</button>
+    <button class="btn btn-primary my-2">Fiction</button>
+    <button class="btn btn-primary my-2">History</button>
+    <button class="btn btn-primary my-2">Politics</button>
+    <button class="btn btn-primary my-2">Self-Help</button>
+    
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+            {% for book in books %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                            <image height="225" width="100%" href="{{ book.cover_pg }}"/></svg>
+                        <div class="card-body">
+                            <p class="card-text">❤️ {{ book.rank }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="{{ book.get_absolute_url }}">
+                                        <button type="button" class="btn btn-primary my-2"> View </button>
+                                    </a>
+                                </div>
+                                <small class="text-muted">{{ book.publish }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div> 
+    <!-- Pagination-->
+    <nav class="d-flex justify-content-center wow fadeIn">
+        <ul class="pagination pg-blue">
+
+          <!--Arrow left-->
+          <li class="page-item">
+              {% if page.has_previous %}
+                <a class="page-link" href="?page={{ page.previous_page_number }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+                </a>
+               {% endif %}
+          </li>
+
+          <li class="page-item active">
+              <span class="sr-only">
+                {{ page.number }}
+              </span>
+          </li>
+
+          <li class="page-item">
+              {% if page.has_next %}
+                <a class="page-link" href="?page={{page.next_page_number }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+                </a>
+               {% endif %}
+          </li>
+        </ul>
+      </nav>
+      <!--Footer-->
+    <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+    </footer>          
+    
+{% endblock %}
