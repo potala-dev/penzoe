@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section class="jumbotron text-center" style="background-image: url('https://img.etimg.com/thumb/msid-67619899,width-640,resizemode-4,imgsize-134956/coincidence-or-what.jpg');">
+        <div class="container" >
+            <br>
+            <p>
+                <!-- Search form -->
+                <form>
+                    <input class="form-control" type="text" placeholder="Title, Author" aria-label="Search"> 
+                    <button class="btn btn-primary my-2">Search</button>
+                </form>
+            </p>
+        </div>
+        <br>
+    </section>
+    <a href="/Category/buddhism"><button class="btn btn-primary my-2">Buddhism</button></a>
+    <a href="/Category/Finance"><button class="btn btn-primary my-2">Finance</button></a>
+    <a href="/Category/Fiction"><button class="btn btn-primary my-2">Fiction</button></a>
+    <a href="/Category/History"><button class="btn btn-primary my-2">History</button></a>
+    <a href="/Category/Politics"><button class="btn btn-primary my-2">Politics</button></a>
+    <a href="/Category/Self Help"><button class="btn btn-primary my-2">Self-Help</button></a>
+    
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+            {% if books %}
+                {% for book in books %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                                <image height="225" width="100%" href="{{ book.cover_pg }}"/></svg>
+                            <div class="card-body">
+                                <p class="card-text">❤️ {{ book.rank }}&nbsp;<span style="text-align: center;color:blue"> {{ book.genre }}</span></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="{{ book.get_absolute_url }}">
+                                            <button type="button" class="btn btn-primary my-2"> View </button>
+                                        </a>
+                                    </div>
+                                    <small class="text-muted">{{ book.publish }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="justify-content-center"><h1>No Result Found...</h1></div>
+            {% endif %}
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination pagintaion-template d-flex justify-content-center">
+                  {% if books.has_previous %}                
+                  <li class="page-item" ><a href="?{{ page }}={{ books.previous_page_number }}" class="page-link"> <i class="fa fa-angle-left" color='#FFF'></i>{{ books.previous_page_number }}</i></a></li>
+                  {% endif %}
+                  <li class="page-item" color='#FFF'><a href="?{{ page }}={{ books.number }}" class="page-link active" color='#FFF'>{{ books.number }}</a></li>
+                  {% if books.has_next %}
+                  <li class="page-item" color='#FFF'><a href="?{{ page }}={{ books.next_page_number }}" class="page-link"> <i class="fa fa-angle-right" color='#FFF'>{{ books.next_page_number }}</i></a></li>
+                  {% endif %}
+                </ul>
+              </nav>
+        </div>
+    </div> 
+    <!-- Pagination-->
+    
+      <!--Footer-->
+    <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+    </footer>          
+    
+{% endblock %}
