@@ -8,7 +8,7 @@ class CustomPasswordChangeView(PasswordChangeView):
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('tho/', admin.site.urls),
     path('', include('book.urls')),
     path('accounts/password/change/',
         CustomPasswordChangeView.as_view(),
