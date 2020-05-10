@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 from .forms import BookUploadForm
 from .models import Book
+from .utils import handle_uploaded_file
 
 
 def book_list(request,):
@@ -45,20 +47,23 @@ def book_by_cat(request, cat):
     return render(request, "book/book_list.html", context)
 
 
+@login_required
 def upload_book(request):
     if request.method == "POST":
         form = BookUploadForm(request.POST, request.FILES)
         if form.is_valid():
             cd = form.cleaned_data
-            handle_uploaded_file(request.FILES["file"])
-            print(cd)
+            file_name, download_url = handle_uploaded_file(cd["file"], cd["title"])
+            # create Book object
+            Book.objects.create(
+                title=cd["title"],
+                author=cd["author"],
+                download_link=download_url,
+                genre=cd["genre"],
+                file_name=file_name,
+            )
+            print("book created")
             return HttpResponseRedirect("/")
     else:
         form = BookUploadForm()
     return render(request, "book/book_upload_form.html", {"form": form})
-
-
-def handle_uploaded_file(f):
-    with open("./test-book.pdf", "wb+") as destination:
-        for chunk in f.chunks():
-            destination.write(chunk)

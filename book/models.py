@@ -7,18 +7,16 @@ from django.utils import timezone
 class Book(models.Model):
     title = models.CharField(max_length=250)
     author = models.CharField(max_length=100)
-    pages = models.IntegerField()
-    rank = models.IntegerField()
-    cover_pg = models.URLField()
+    pages = models.IntegerField(null=True)
+    rank = models.IntegerField(null=True)
+    cover_pg = models.URLField(null=True)
     download_link = models.URLField()
     publish = models.DateTimeField(default=timezone.now)
     genre = models.CharField(max_length=250)
-    summary = models.TextField()
-
+    file_name = models.CharField(max_length=250)
 
     def __str__(self):
         return self.title
 
-
     def get_absolute_url(self):
-        return reverse('book_detail', kwargs={'id': self.id})
+        return reverse("book_detail", kwargs={"id": self.id})
