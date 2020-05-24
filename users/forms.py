@@ -22,12 +22,6 @@ class CustomUserChangeForm(UserChangeForm):
         )
 
 
-class UserUpdateForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ("email",)
-
-
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
