@@ -18,6 +18,7 @@ urlpatterns = [
         name="account_password_change",
     ),
     path("accounts/", include("allauth.urls")),
+    path("users/", include("users.urls")),
 ]
 
 if settings.DEBUG:
