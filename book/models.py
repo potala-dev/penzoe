@@ -1,10 +1,12 @@
 from django.db import models
+from django.conf import settings
 from django.urls import reverse
 from django.utils import timezone
 
 
 # Create your models here.
 class Book(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=250)
     author = models.CharField(max_length=100)
     pages = models.IntegerField(null=True)

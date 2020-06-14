@@ -3,12 +3,38 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from PIL import Image
 
+WEIGHTAGE = {
+    'book_uploads': 1,
+    'threads': 2,
+    'comments': 5
+}
 
 class User(AbstractUser):
-    pass
+    # upvoted_threads = models.ManyToManyField(Threads, related_name="upvoted_users")
+    # downvoted_threads = models.ManyToManyField(Threads, related_name="upvoted_users")
+    # upvoted_comments =models.ManyToManyField(Comments, related_name="upvoted_users")
+    # upvoted_comments =models.ManyToManyField(Comments, related_name="upvoted_users")
+    points = models.IntegerField(default=0)
 
     def __str__(self):
         return self.email
+
+    def _get_total_points(self, objs):
+        return sum([obj.points for obj in objs])
+
+
+    def update_points(self):
+        #threads = self.threads_set.filter(~Q(points = 0))
+        #threads_poinst = self._get_total_points(threads) * WEIGHTAGE['threads']
+        #comments = self.comments_set.filter(~Q(points = 0))
+        #comments_poinst = self._get_total_points(comments) * WEIGHTAGE['comments']
+        books_points = self.book_set.count()
+
+        # Calculated weighted points.
+        #user_points = n_books_uploaded * WEIGHTAGE['book_uploads'] + threads_points + comments_points
+        user_points = books_points * WEIGHTAGE['book_uploads']
+        self.points = user_points
+        self.save()
 
 
 class Profile(models.Model):
