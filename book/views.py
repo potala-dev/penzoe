@@ -1,7 +1,8 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .forms import BookUploadForm
 from .models import Book
@@ -25,7 +26,6 @@ def book_list(request,):
 
 def book_detail(request, id):
     book = Book.objects.filter(pk=id)
-    print(book)
     return render(request, "book/book_details.html", {"book": book[0]})
 
 
@@ -56,14 +56,18 @@ def upload_book(request):
             file_name, download_url = handle_uploaded_file(cd["file"], cd["title"])
             # create Book object
             Book.objects.create(
+                user=request.user,
                 title=cd["title"],
                 author=cd["author"],
                 download_link=download_url,
                 genre=cd["genre"],
                 file_name=file_name,
             )
-            print("book created")
-            return HttpResponseRedirect("/")
+            messages.success(
+                request, f"Thanks for sharing the book. You just earned some points"
+            )
+            request.user.update_points()
+            return redirect("home")
     else:
         form = BookUploadForm()
     return render(request, "book/book_upload_form.html", {"form": form})
