@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # Local
     "users.apps.UsersConfig",
     "book.apps.BookConfig",
+    "discourse.apps.DiscourseConfig",
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
