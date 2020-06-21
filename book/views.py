@@ -29,10 +29,7 @@ def book_list(request,):
 
 def book_detail(request, id):
     book = Book.objects.get(pk=id)
-    form = ThreadForm()
-    threads = Thread.objects.filter(book__id=id)
-    print(threads)
-    context = {"book": book, "form": form, "threads": threads}
+    context = {"book": book}
     return render(request, "book/book_details.html", context)
 
 

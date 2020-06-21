@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 {% block content %}
 <main class="mt-3 pt-3">
   <div class="container dark-grey-text mt-0">
@@ -23,36 +22,18 @@
           </div>
           <p class="lead font-weight-bold">{{ book.title }}</p>
           <p class="lead font-weight-bold">{{ book.author }}</p>
-
           <p>{{ book.summary }}</p>
           <a href="{{ book.download_link }}">
-            <button class="btn btn-primary btn-md my-0 p"> Download</button></a>
-
-          <button class="btn btn-primary btn-md my-0"> Discuss</button>
+            <button class="btn btn-primary btn-md my-0 p"> Download</button>
+          </a>
+          <a href="{% url 'book_threads' id=book.id %}?book_title={{book.title}}">
+            <button class=" btn btn-primary btn-md my-0"> Discuss</button>
+          </a>
         </div>
       </div>
     </div>
   </div>
   <hr>
-  <h3>Threads</h3>
-  <table class="table">
-    <tbody>
-      {% for thread in threads %}
-      <tr>
-        <td><a href='#'>{{ thread.title }} </a></td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  {% if request.user.is_authenticated %}
-  <h3>Create New Thread</h3>
-  <form method="post" action="{% url 'create_thread' id=book.id %}">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button class="btn btn-primary" type="submit">Submit</button>
-  </form>
-  {% else %}
-  <p>Please singin to create a new thread </p>
-  {% endif %}
+  <h3>Similar books</h3>
 </main>
 {% endblock%}
