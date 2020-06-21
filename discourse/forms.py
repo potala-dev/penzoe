@@ -1,3 +1,4 @@
+from crispy_forms.helper import FormHelper
 from django import forms
 
 
@@ -7,4 +8,12 @@ class ThreadForm(forms.Form):
 
 
 class CommentForm(forms.Form):
-    body = forms.CharField(max_length=5000, widget=forms.Textarea, required=False)
+    text = forms.CharField(
+        max_length=5000,
+        widget=forms.Textarea(attrs={"placeholder": "Type your comment here."}),
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(CommentForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_show_labels = False
