@@ -9,7 +9,7 @@ import django_heroku
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 env = environ.Env(DEBUG=(bool, False), DEBUG_TOOLBAR=(bool, False))
-env_file = os.path.join(BASE_DIR, ".envs")
+env_file = os.path.join(BASE_DIR, ".env")
 environ.Env.read_env(env_file)
 
 # Quick-start development settings - unsuitable for production
@@ -164,4 +164,4 @@ ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 LOGIN_REDIRECT_URL = "/"
 ACCOUNT_LOGOUT_REDIRECT_URL = "/"
 
-django_heroku.settings(locals())
+django_heroku.settings(locals(), secret_key=False)
