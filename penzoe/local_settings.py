@@ -2,25 +2,30 @@
 
 import os
 
+import environ
 import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+env = environ.Env(DEBUG=(bool, False), DEBUG_TOOLBAR=(bool, False))
+env_file = os.path.join(BASE_DIR, ".env")
+environ.Env.read_env(env_file)
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = env("SECRET_KEY")
 
 # GITHUB
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
-GITHUB_ORG = os.environ.get("GITHUB_ORG")
-GITHUB_BOOK_CATALOG = os.environ.get("GITHUB_BOOK_CATALOG")
+GITHUB_TOKEN = env("GITHUB_TOKEN")
+GITHUB_ORG = env("GITHUB_ORG")
+GITHUB_BOOK_CATALOG = env("GITHUB_BOOK_CATALOG")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-DEBUG_TOOLBAR = False
+DEBUG = env("DEBUG")
+DEBUG_TOOLBAR = env("DEBUG_TOOLBAR")
 
 ALLOWED_HOSTS = []
 
