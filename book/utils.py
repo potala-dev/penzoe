@@ -4,9 +4,6 @@ import environ
 from django.conf import settings
 from github import Github
 
-ORG = Github(settings.GITHUB_TOKEN).get_organization(settings.GITHUB_ORG)
-
-
 def get_bits(file):
     f = io.BytesIO()
     for chunk in file.chunks():
@@ -20,6 +17,7 @@ def create_file_name(file, title):
 
 
 def handle_uploaded_file(file, title):
+    ORG = Github(settings.GITHUB_TOKEN).get_organization(settings.GITHUB_ORG)
     file_name = create_file_name(file, title)
     content = get_bits(file)
     repo = ORG.get_repo(settings.GITHUB_BOOK_CATALOG)

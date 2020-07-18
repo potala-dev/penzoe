@@ -1,14 +1,7 @@
-"""Django settings for penzoe project."""
-
 import os
 
-import django_heroku
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname((os.path.abspath(__file__)))))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -17,15 +10,6 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 GITHUB_ORG = os.environ.get("GITHUB_ORG")
 GITHUB_BOOK_CATALOG = os.environ.get("GITHUB_BOOK_CATALOG")
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-DEBUG_TOOLBAR = False
-
-ALLOWED_HOSTS = []
-
-
-# Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -57,12 +41,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
-# Enable the debug toolbar only in DEBUG mode.
-if DEBUG and DEBUG_TOOLBAR:
-    INSTALLED_APPS.append("debug_toolbar")
-    MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
-    INTERNAL_IPS = ["127.0.0.1"]
 
 ROOT_URLCONF = "penzoe.urls"
 
@@ -141,9 +119,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
-# Email
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
 # django-allauth
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
@@ -159,5 +134,3 @@ ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 
 LOGIN_REDIRECT_URL = "/"
 ACCOUNT_LOGOUT_REDIRECT_URL = "/"
-
-django_heroku.settings(locals())
