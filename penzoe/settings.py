@@ -160,4 +160,4 @@ ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 LOGIN_REDIRECT_URL = "/"
 ACCOUNT_LOGOUT_REDIRECT_URL = "/"
 
-django_heroku.settings(locals(), secret_key=False)
+django_heroku.settings(locals())
