@@ -1,47 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
 <main class="mt-3 pt-3">
-    <div class="container dark-grey-text mt-0">
-      <!--Grid row-->
-      <div class="row wow fadeIn">
-        <!--Grid column-->
-        <div class="col-md-6 mb-4">
+  <div class="container dark-grey-text mt-0">
+    <div class="row wow fadeIn">
+      <div class="col-md-6 mb-4">
+        <img src="{{ book.cover_pg }}" class="img-fluid" alt="">
+      </div>
 
-          <img src="{{ book.cover_pg }}" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-6 mb-4">
-          <!--Content-->
-          <div class="p-4">
-
-            <div class="mb-3">
-              <a href="">
-                <span class="badge purple mr-1">{{ book.genre }}</span>
-              </a>
-              <a href="">
-                <span class="badge blue mr-1">❤️ {{ book.rank }}</span>
-              </a>
-              <a href="">
-                <span class="badge red mr-1">{{ book.publish }}</span>
-              </a>
-            </div>
-            <p class="lead font-weight-bold">{{ book.title }}</p>
-            <p class="lead font-weight-bold">{{ book.author }}</p>
-
-            <p>{{ book.summary }}</p>
-            <a href="{{ book.download_link }}">
-              <button class="btn btn-primary btn-md my-0 p"> Download</button></a>
-              
-            <button class="btn btn-primary btn-md my-0"> Discuss</button>
+      <div class="col-md-6 mb-4">
+        <div class="p-4">
+          <div class="mb-3">
+            <a href="">
+              <span class="badge purple mr-1">{{ book.genre }}</span>
+            </a>
+            <a href="">
+              <span class="badge blue mr-1">❤️ {{ book.rank }}</span>
+            </a>
+            <a href="">
+              <span class="badge red mr-1">{{ book.publish }}</span>
+            </a>
           </div>
-          <!--Content-->
+          <p class="lead font-weight-bold">{{ book.title }}</p>
+          <p class="lead font-weight-bold">{{ book.author }}</p>
+          <p>{{ book.summary }}</p>
+          <a href="{{ book.download_link }}">
+            <button class="btn btn-primary btn-md my-0 p"> Download</button>
+          </a>
+          <a href="{% url 'book_threads' id=book.id %}?book_title={{book.title}}">
+            <button class=" btn btn-primary btn-md my-0"> Discuss</button>
+          </a>
         </div>
-        <!--Grid column-->
       </div>
     </div>
-      <hr>   
-  </main>
+  </div>
+  <hr>
+  <h3>Similar books</h3>
+</main>
 {% endblock%}

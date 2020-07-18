@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h3>
+    {{ thread.title}}
+</h3>
+<p>{{ thread.body }}</p>
+<table class="table">
+    <tbody>
+        {% for comment in comments %}
+        <tr>
+            <td>{{ comment.text }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% if request.user.is_authenticated %}
+<h3>Add replay</h3>
+<form method="post" action="{% url 'thread_comments' id=thread.id%}">
+    {% csrf_token %}
+    {{ form.text|as_crispy_field }}
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+{% else %}
+<p>Please singin to create a new thread </p>
+{% endif %}
+{% endblock %}

@@ -1,8 +1,11 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
+
+from discourse.forms import ThreadForm
+from discourse.models import Thread
 
 from .forms import BookUploadForm
 from .models import Book
@@ -25,8 +28,9 @@ def book_list(request,):
 
 
 def book_detail(request, id):
-    book = Book.objects.filter(pk=id)
-    return render(request, "book/book_details.html", {"book": book[0]})
+    book = Book.objects.get(pk=id)
+    context = {"book": book}
+    return render(request, "book/book_details.html", context)
 
 
 def book_by_cat(request, cat):

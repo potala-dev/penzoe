@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h3>
+    Threads for
+    <a href="{% url 'book_detail' id=book_id %}">{{book_title}}</a>
+</h3>
+<table class="table">
+    <tbody>
+        {% for thread in threads %}
+        <tr>
+            <td><a href="{{ thread.get_absolute_url }}">{{ thread.title }} </a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'create_thread' id=book_id %}">
+    <button class="btn btn-primary">New Thread</button>
+</a>
+{% endblock %}
