@@ -14,7 +14,7 @@ django-allauth==0.41.0    # via -r requirements.in
 django-crispy-forms==1.9.0  # via -r requirements.in
 django-environ==0.4.5     # via -r requirements.in
 django-heroku==0.3.1      # via -r requirements.in
-django==3.0.5             # via -r requirements.in, django-allauth, django-heroku
+django==3.0.7             # via -r requirements.in, django-allauth, django-heroku
 gunicorn==20.0.4          # via -r requirements.in
 idna==2.9                 # via requests
 oauthlib==3.1.0           # via requests-oauthlib
