@@ -5,8 +5,6 @@ from .base import *
 DEBUG = False
 DEBUG_TOOLBAR = False
 
-ALLOWED_HOSTS = []
-
 # Email
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
