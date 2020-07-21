@@ -1,7 +1,7 @@
 #dev
 .venv
 .vscode/**
-.env
+.envs
 
 # python
 **/__pycache__/**

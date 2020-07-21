@@ -1,7 +1,9 @@
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname((os.path.abspath(__file__)))))
+BASE_DIR = os.path.dirname(
+    os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
+)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -10,6 +12,14 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 GITHUB_ORG = os.environ.get("GITHUB_ORG")
 GITHUB_BOOK_CATALOG = os.environ.get("GITHUB_BOOK_CATALOG")
+
+
+def _bool(s):
+    return True if int(s) == 1 else False
+
+
+DEBUG = _bool(os.environ.get("DEBUG"))
+DEBUG_TOOLBAR = _bool(os.environ.get("DEBUG_TOOLBAR"))
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -29,6 +39,7 @@ INSTALLED_APPS = [
     "book.apps.BookConfig",
     "discourse.apps.DiscourseConfig",
 ]
+
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
@@ -134,3 +145,9 @@ ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 
 LOGIN_REDIRECT_URL = "/"
 ACCOUNT_LOGOUT_REDIRECT_URL = "/"
+
+
+if DEBUG and DEBUG_TOOLBAR:
+    INSTALLED_APPS.append("debug_toolbar")
+    MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
+    INTERNAL_IPS = ["127.0.0.1"]

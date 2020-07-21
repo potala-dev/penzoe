@@ -2,9 +2,6 @@ import django_heroku
 
 from .base import *
 
-DEBUG = False
-DEBUG_TOOLBAR = False
-
 # Email
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
