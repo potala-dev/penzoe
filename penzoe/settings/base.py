@@ -15,6 +15,8 @@ GITHUB_BOOK_CATALOG = os.environ.get("GITHUB_BOOK_CATALOG")
 
 
 def _bool(s):
+    if not s:
+        return False
     return True if int(s) == 1 else False
 
 
