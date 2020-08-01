@@ -46,3 +46,5 @@ jobs:
 
       - name: Test it
         run: make coverage
+        env:
+          SECRET_KEY: 'a secret to everybody'
