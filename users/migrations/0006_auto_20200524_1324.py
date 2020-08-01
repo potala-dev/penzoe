@@ -5,19 +5,15 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('users', '0005_auto_20200524_1026'),
-    ]
+    dependencies = [("users", "0005_auto_20200524_1026")]
 
     operations = [
         migrations.AddField(
-            model_name='user',
-            name='n_books_upladed',
+            model_name="user",
+            name="n_books_upladed",
             field=models.IntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='user',
-            name='points',
-            field=models.IntegerField(default=0),
+            model_name="user", name="points", field=models.IntegerField(default=0)
         ),
     ]

@@ -68,7 +68,7 @@ def upload_book(request):
                 file_name=file_name,
             )
             messages.success(
-                request, f"Thanks for sharing the book. You just earned some points"
+                request, "Thanks for sharing the book. You just earned some points"
             )
             request.user.update_points()
             return redirect("home")

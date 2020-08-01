@@ -5,18 +5,13 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('users', '0003_auto_20200523_1353'),
-    ]
+    dependencies = [("users", "0003_auto_20200523_1353")]
 
     operations = [
-        migrations.RemoveField(
-            model_name='profile',
-            name='background_pic',
-        ),
+        migrations.RemoveField(model_name="profile", name="background_pic"),
         migrations.AlterField(
-            model_name='profile',
-            name='profile_pic',
-            field=models.ImageField(default='default.jpg', upload_to='profile_pics'),
+            model_name="profile",
+            name="profile_pic",
+            field=models.ImageField(default="default.jpg", upload_to="profile_pics"),
         ),
     ]

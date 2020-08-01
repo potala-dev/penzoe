@@ -4,6 +4,7 @@ import environ
 from django.conf import settings
 from github import Github
 
+
 def get_bits(file):
     f = io.BytesIO()
     for chunk in file.chunks():
