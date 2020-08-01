@@ -8,3 +8,4 @@ black
 isort
 pre-commit
 coverage
+mypy==0.782
