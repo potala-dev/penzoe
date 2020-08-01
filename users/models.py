@@ -12,8 +12,6 @@ class User(AbstractUser):
     # upvoted_comments =models.ManyToManyField(Comments, related_name="upvoted_users")
     # upvoted_comments =models.ManyToManyField(Comments, related_name="upvoted_users")
     points = models.IntegerField(default=0)
-    profile_pic = models.ImageField(upload_to="users/%y/%m/%d/", blank=True)
-    background_pic = models.ImageField(upload_to="users/%y/%m/%d/", blank=True)
 
     def __str__(self):
         return self.email
