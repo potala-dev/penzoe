@@ -31,7 +31,6 @@ def create_thread(request, id):
                 user=request.user, book=book, title=cd["title"], body=cd["body"]
             )
             thread.save()
-            print(thread)
             return redirect(thread)
 
     form = ThreadForm()
@@ -45,13 +44,11 @@ def thread_comments(request, id):
         form = CommentForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            print(cd)
             thread = Thread.objects.get(pk=id)
             Comment.objects.create(user=request.user, thread=thread, text=cd["text"])
 
     form = CommentForm()
     comments = Comment.objects.filter(thread__id=id)
-    print(comments)
     if not comments:
         thread = Thread.objects.get(pk=id)
     else:
