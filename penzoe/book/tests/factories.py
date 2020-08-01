@@ -5,4 +5,4 @@ class BookFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = "book.Book"
 
-    user = factory.SubFactory("users.tests.factories.UserFactory")
+    user = factory.SubFactory("penzoe.users.tests.factories.UserFactory")

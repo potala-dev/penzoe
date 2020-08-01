@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
-from book.models import Book
+from penzoe.book.models import Book
 
 from .forms import CommentForm, ThreadForm
 from .models import Comment, Thread

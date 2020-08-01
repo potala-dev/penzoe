@@ -11,15 +11,15 @@ class CustomPasswordChangeView(PasswordChangeView):
 
 urlpatterns = [
     path("tho/", admin.site.urls),
-    path("", include("book.urls")),
+    path("", include("penzoe.book.urls")),
+    path("users/", include("penzoe.users.urls")),
+    path("discourse/", include("penzoe.discourse.urls")),
     path(
         "accounts/password/change/",
         CustomPasswordChangeView.as_view(),
         name="account_password_change",
     ),
     path("accounts/", include("allauth.urls")),
-    path("users/", include("users.urls")),
-    path("discourse/", include("discourse.urls")),
 ]
 
 if settings.DEBUG:

@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     # Local
-    "users.apps.UsersConfig",
-    "book.apps.BookConfig",
-    "discourse.apps.DiscourseConfig",
+    "penzoe.users",
+    "penzoe.book",
+    "penzoe.discourse",
 ]
 
 
@@ -55,7 +55,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "penzoe.urls"
+ROOT_URLCONF = "project.urls"
 
 TEMPLATES = [
     {
@@ -73,7 +73,7 @@ TEMPLATES = [
     }
 ]
 
-WSGI_APPLICATION = "penzoe.wsgi.application"
+WSGI_APPLICATION = "project.wsgi.application"
 
 
 # Database

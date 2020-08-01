@@ -1,6 +1,6 @@
 from test_plus.test import TestCase as PlustTestCase
 
-from book.tests.factories import BookFactory
+from penzoe.book.tests.factories import BookFactory
 
 from .factories import ProfileFactory, UserFactory
 
