@@ -13,7 +13,7 @@ graph:
 		-o models.png
 
 coverage:
-	coverage run --source='penzoe' -m pytest --migrations
+	coverage run -m pytest --migrations
 	coverage report
 
 mypy:
