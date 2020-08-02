@@ -20,15 +20,18 @@ class User(AbstractUser):
         return sum([obj.points for obj in objs])
 
     def update_points(self):
-        # threads = self.threads_set.filter(~Q(points = 0))
-        # threads_poinst = self._get_total_points(threads) * WEIGHTAGE['threads']
-        # comments = self.comments_set.filter(~Q(points = 0))
-        # comments_poinst = self._get_total_points(comments) * WEIGHTAGE['comments']
-        books_points = self.book_set.count()
+        threads = self.thread_set.filter(~models.Q(points=0))
+        threads_points = self._get_total_points(threads) * WEIGHTAGE["threads"]
+        comments = self.comment_set.filter(~models.Q(points=0))
+        comments_points = self._get_total_points(comments) * WEIGHTAGE["comments"]
+        n_books_uploaded = self.book_set.count()
 
         # Calculated weighted points.
-        # user_points = n_books_uploaded * WEIGHTAGE['book_uploads'] + threads_points + comments_points
-        user_points = books_points * WEIGHTAGE["book_uploads"]
+        user_points = (
+            n_books_uploaded * WEIGHTAGE["book_uploads"]
+            + threads_points
+            + comments_points
+        )
         self.points = user_points
         self.save()
 
