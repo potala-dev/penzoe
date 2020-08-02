@@ -3,7 +3,14 @@
 ## Resource links
 
 #### Similar apps:
-- [Book-Reviews](https://github.com/mariastezhko/Book-Reviews/blob/master/apps/reviews/views.py)
+- [ ] [Book-Reviews](https://github.com/mariastezhko/Book-Reviews/blob/master/apps/reviews/views.py)
 
 #### Books Uploads:
- - https://gearheart.io/blog/how-to-upload-files-with-django/
+- [ ] https://gearheart.io/blog/how-to-upload-files-with-django/
+ 
+#### Code Coverage
+- [ ] [Getting a Django Application to 100% Test Coverage](https://adamj.eu/tech/2019/04/30/getting-a-django-application-to-100-percent-coverage/)
+
+#### Testing
+- [ ] [Testing Your Django App With Pytest](https://djangostars.com/blog/django-pytest-testing/)
+- [ ] [How to Provide Test Fixtures for Django Models in Pytest](https://realpython.com/django-pytest-fixtures/)
