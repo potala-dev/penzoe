@@ -7,6 +7,7 @@ class UserFactory(factory.django.DjangoModelFactory):
         model = settings.AUTH_USER_MODEL
 
     username = factory.Sequence(lambda n: f"user_{n}")
+    email = "testuser@test.com"
 
 
 class ProfileFactory(factory.django.DjangoModelFactory):
