@@ -1,1 +1,1 @@
-python manage.py runserver --settings=penzoe.settings.development
+python manage.py runserver --settings=project.settings.development
