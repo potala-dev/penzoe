@@ -113,3 +113,8 @@ models.png
 
 # Django
 staticfiles/
+**.sqlite3
+media/
+
+# CI
+.coverage
