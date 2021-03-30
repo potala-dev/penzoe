@@ -4,32 +4,64 @@
 #
 #    pip-compile --output-file=requirements.txt requirements.in
 #
-asgiref==3.2.10           # via django
-certifi==2020.6.20        # via requests
-chardet==3.0.4            # via requests
-defusedxml==0.6.0         # via python3-openid
-deprecated==1.2.10        # via pygithub
-dj-database-url==0.5.0    # via django-heroku
-django-allauth==0.41.0    # via -r requirements.in
-django-crispy-forms==1.9.0  # via -r requirements.in
-django-environ==0.4.5     # via -r requirements.in
-django-heroku==0.3.1      # via -r requirements.in
-django==3.0.7             # via -r requirements.in, django-allauth, django-heroku
-gunicorn==20.0.4          # via -r requirements.in
-idna==2.9                 # via requests
-oauthlib==3.1.0           # via requests-oauthlib
-pillow==7.1.2             # via -r requirements.in
-psycopg2==2.8.5           # via django-heroku
-pygithub==1.51            # via -r requirements.in
-pyjwt==1.7.1              # via pygithub
-python3-openid==3.1.0     # via django-allauth
-pytz==2020.1              # via django
-requests-oauthlib==1.3.0  # via django-allauth
-requests==2.24.0          # via django-allauth, pygithub, requests-oauthlib
-sqlparse==0.3.1           # via django
-urllib3==1.25.9           # via requests
-whitenoise==5.1.0         # via django-heroku
-wrapt==1.12.1             # via deprecated
+asgiref==3.2.10
+    # via django
+certifi==2020.6.20
+    # via requests
+chardet==3.0.4
+    # via requests
+defusedxml==0.6.0
+    # via python3-openid
+deprecated==1.2.10
+    # via pygithub
+dj-database-url==0.5.0
+    # via django-heroku
+django-allauth==0.41.0
+    # via -r requirements.in
+django-crispy-forms==1.9.0
+    # via -r requirements.in
+django-environ==0.4.5
+    # via -r requirements.in
+django-heroku==0.3.1
+    # via -r requirements.in
+django==3.0.12
+    # via
+    #   -r requirements.in
+    #   django-allauth
+    #   django-heroku
+gunicorn==20.0.4
+    # via -r requirements.in
+idna==2.9
+    # via requests
+oauthlib==3.1.0
+    # via requests-oauthlib
+pillow==7.1.2
+    # via -r requirements.in
+psycopg2==2.8.5
+    # via django-heroku
+pygithub==1.51
+    # via -r requirements.in
+pyjwt==1.7.1
+    # via pygithub
+python3-openid==3.1.0
+    # via django-allauth
+pytz==2020.1
+    # via django
+requests-oauthlib==1.3.0
+    # via django-allauth
+requests==2.24.0
+    # via
+    #   django-allauth
+    #   pygithub
+    #   requests-oauthlib
+sqlparse==0.3.1
+    # via django
+urllib3==1.25.9
+    # via requests
+whitenoise==5.1.0
+    # via django-heroku
+wrapt==1.12.1
+    # via deprecated
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
