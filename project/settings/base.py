@@ -7,6 +7,7 @@ BASE_DIR = os.path.dirname(
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
+ADMIN_PATH = os.environ.get("ADMIN_PATH")
 
 # GITHUB
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
