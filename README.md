@@ -14,3 +14,9 @@
 #### Testing
 - [ ] [Testing Your Django App With Pytest](https://djangostars.com/blog/django-pytest-testing/)
 - [ ] [How to Provide Test Fixtures for Django Models in Pytest](https://realpython.com/django-pytest-fixtures/)
+
+#### Django Rest auth
+- https://medium.com/@dobrotek6/drfsamv-django-rest-framework-social-auth-mongo-vuejs-part-1-c5c907dd7b69
+
+#### Loggings
+- https://realpython.com/python-logging/
