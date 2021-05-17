@@ -17,3 +17,9 @@ class Word(models.Model):
     learning_started = models.DateTimeField(auto_now_add=True)
     last_revised = models.DateTimeField(auto_now=True)
     user = models.ManyToManyField(settings.AUTH_USER_MODEL)
+
+    def __str__(self):
+        return self.form
+
+    class Meta:
+        ordering = ["form"]
