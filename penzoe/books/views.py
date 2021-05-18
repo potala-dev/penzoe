@@ -1,11 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
-
-from penzoe.discourse.forms import ThreadForm
-from penzoe.discourse.models import Thread
 
 from .forms import BookUploadForm
 from .models import Book

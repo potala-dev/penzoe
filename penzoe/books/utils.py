@@ -1,6 +1,5 @@
 import io
 
-import environ
 from django.conf import settings
 from github import Github
 
