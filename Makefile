@@ -4,7 +4,10 @@ local:
 	heroku local
 
 deploy:
-	git push && git push heroku master
+	poetry export -f requirements.txt --output requirements.txt --without-hashes
+	git commit -a -m "deploy"
+	git push
+	git push heroku master
 
 graph:
 	./manage.py graph_models \
