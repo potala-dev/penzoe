@@ -17,7 +17,7 @@ def read_threads(request, id):
         "book_id": id,
         "book_title": book_title,
     }
-    return render(request, "discourse/book_threads.html", context)
+    return render(request, "discourse/threads.html", context)
 
 
 @login_required

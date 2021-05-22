@@ -26,7 +26,7 @@
           <a href="{{ book.download_link }}">
             <button class="btn btn-primary btn-md my-0 p"> Download</button>
           </a>
-          <a href="{% url 'book_threads' id=book.id %}?book_title={{book.title}}">
+          <a href="{% url 'threads' id=book.id %}?book_title={{book.title}}">
             <button class=" btn btn-primary btn-md my-0"> Discuss</button>
           </a>
         </div>

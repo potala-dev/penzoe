@@ -14,7 +14,7 @@
         {% endfor %}
     </tbody>
 </table>
-<a href="{% url 'create_thread' id=book_id %}">
+<a href="{% url 'thread_create' id=book_id %}">
     <button class="btn btn-primary">New Thread</button>
 </a>
 {% endblock %}
