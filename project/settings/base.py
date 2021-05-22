@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.facebook",
     "allauth.socialaccount.providers.google",
     # Local
+    "penzoe.core",
     "penzoe.users",
     "penzoe.books",
     "penzoe.discourse",

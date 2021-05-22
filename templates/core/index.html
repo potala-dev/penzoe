@@ -4,3 +4,17 @@
 {# Empty the message block so that messages are consumed but not displayed. #}
 {% block message_block %}{% endblock %}
 
+{% block main %}
+<div class="px-4 py-5 text-center">
+    <h1 class="display-5 fw-bold">Build Your Vocabulary with Personalized Tests</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">
+           Tests are generated based on your proficiency level using the <a href="https://en.wikipedia.org/wiki/Spaced_repetition">Space Repetition</a> algorithm.
+           <span class="text-black-50">You can also track your progress and share with other.</span>
+      </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Take the Test Now</button>
+      </div>
+    </div>
+</div>
+{% endblock %}
