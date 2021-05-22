@@ -2,4 +2,4 @@ from django.urls import path
 
 from .views import profile
 
-urlpatterns = [path("profile/", profile, name="users:profile")]
+urlpatterns = [path("profile/", profile, name="user_profile")]

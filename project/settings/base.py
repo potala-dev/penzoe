@@ -1,28 +1,47 @@
 import os
 
+import dj_database_url
+import environ
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(
     os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
 )
+env = environ.Env(
+    ALLOWED_HOSTS=(list, []),
+    ANYMAIL_ACCOUNT_DEFAULT_HTTP_PROTOCOL=(str, "https"),
+    CSRF_COOKIE_SECURE=(bool, True),
+    DATABASE_CONN_MAX_AGE=(int, 600),
+    DATABASE_SSL_REQUIRE=(bool, True),
+    DEBUG=(bool, False),
+    DEBUG_TOOLBAR=(bool, False),
+    DJSTRIPE_WEBHOOK_VALIDATION=(str, "verify_signature"),
+    EMAIL_BACKEND=(str, "anymail.backends.sendgrid.EmailBackend"),
+    EMAIL_TESTING=(bool, False),
+    ROLLBAR_ENABLED=(bool, True),
+    ROLLBAR_ENVIRONMENT=(str, "production"),
+    SECURE_HSTS_PRELOAD=(bool, True),
+    SECURE_HSTS_SECONDS=(int, 60 * 60 * 24 * 365),
+    SECURE_SSL_REDIRECT=(bool, True),
+    SESSION_COOKIE_SECURE=(bool, True),
+    SLACK_WEBHOOK=(str, ""),
+    STRIPE_LIVE_MODE=(bool, True),
+)
+env_file = os.path.join(BASE_DIR, ".env")
+if os.path.exists(env_file):
+    environ.Env.read_env(env_file)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
-ADMIN_PATH = os.environ.get("ADMIN_PATH")
+SECRET_KEY = env("SECRET_KEY")
+ADMIN_PATH = env("ADMIN_PATH")
 
-# GITHUB
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
-GITHUB_ORG = os.environ.get("GITHUB_ORG")
-GITHUB_BOOK_CATALOG = os.environ.get("GITHUB_BOOK_CATALOG")
+DEBUG = env("DEBUG")
+DEBUG_TOOLBAR = env("DEBUG_TOOLBAR")
 
+ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 
-def _bool(s):
-    if not s:
-        return False
-    return True if int(s) == 1 else False
-
-
-DEBUG = _bool(os.environ.get("DEBUG"))
-DEBUG_TOOLBAR = _bool(os.environ.get("DEBUG_TOOLBAR"))
+# App constants
+domain = "penzoe.herokuapp.com"
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -84,11 +103,15 @@ WSGI_APPLICATION = "project.wsgi.application"
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
+    "default": dj_database_url.config(
+        conn_max_age=env("DATABASE_CONN_MAX_AGE"),
+        ssl_require=env("DATABASE_SSL_REQUIRE"),
+    )
 }
+
+# Starting in Django 3.2, the default field is moving to BigAutoField,
+# but I don't want to mess with a bunch of migrations in 3rd party apps.
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 
 # Password validation
@@ -151,3 +174,9 @@ ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 
 LOGIN_REDIRECT_URL = "/"
 ACCOUNT_LOGOUT_REDIRECT_URL = "/"
+
+
+# GITHUB
+GITHUB_TOKEN = env("GITHUB_TOKEN")
+GITHUB_ORG = env("GITHUB_ORG")
+GITHUB_BOOK_CATALOG = env("GITHUB_BOOK_CATALOG")

@@ -118,3 +118,5 @@ media/
 
 # CI
 .coverage
+
+app_db/

@@ -1,13 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
-from penzoe.book.models import Book
+from penzoe.books.models import Book
 
 from .forms import CommentForm, ThreadForm
 from .models import Comment, Thread
 
 
-def book_threads(request, id):
+def read_threads(request, id):
     form = ThreadForm()
     threads = Thread.objects.filter(book__id=id)
     book_title = request.GET.get("book_title")

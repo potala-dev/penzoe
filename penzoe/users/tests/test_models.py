@@ -4,7 +4,7 @@ from pathlib import Path
 from django.core.files.uploadedfile import SimpleUploadedFile
 from PIL import Image
 
-from penzoe.book.tests.factories import BookFactory
+from penzoe.books.tests.factories import BookFactory
 from penzoe.discourse.tests.factories import CommentFactory, ThreadFactory
 from penzoe.test import TestCase
 from penzoe.users.tests.factories import ProfileFactory

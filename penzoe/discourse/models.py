@@ -3,7 +3,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 
-from penzoe.book.models import Book
+from penzoe.books.models import Book
 
 
 class Thread(models.Model):

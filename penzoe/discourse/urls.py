@@ -3,9 +3,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("book_threads/<int:id>/", views.book_threads, name="discourse:book_threads"),
-    path("threads/<int:id>", views.thread_comments, name="discourse:thread_comments"),
-    path(
-        "threads/create/<int:id>", views.create_thread, name="discourse:create_thread"
-    ),
+    path("threads/<int:id>/", views.read_threads, name="threads"),
+    path("threads/<int:id>/comments", views.thread_comments, name="thread_comments"),
+    path("threads/create/<int:id>", views.create_thread, name="thread_create"),
 ]

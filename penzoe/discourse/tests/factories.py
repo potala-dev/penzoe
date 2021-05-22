@@ -6,7 +6,7 @@ class ThreadFactory(factory.django.DjangoModelFactory):
         model = "discourse.Thread"
 
     user = factory.SubFactory("penzoe.users.tests.factories.UserFactory")
-    book = factory.SubFactory("penzoe.book.tests.factories.BookFactory")
+    book = factory.SubFactory("penzoe.books.tests.factories.BookFactory")
     title = factory.Sequence(lambda n: f"Thread {n}")
 
 
