@@ -1,12 +1,11 @@
-import os
+from pathlib import Path
 
 import dj_database_url
 import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(
-    os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
-)
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
 env = environ.Env(
     ALLOWED_HOSTS=(list, []),
     ANYMAIL_ACCOUNT_DEFAULT_HTTP_PROTOCOL=(str, "https"),
@@ -27,9 +26,9 @@ env = environ.Env(
     SLACK_WEBHOOK=(str, ""),
     STRIPE_LIVE_MODE=(bool, True),
 )
-env_file = os.path.join(BASE_DIR, ".env")
-if os.path.exists(env_file):
-    environ.Env.read_env(env_file)
+env_file = BASE_DIR / ".env"
+if env_file.is_file():
+    environ.Env.read_env(str(env_file))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("SECRET_KEY")
@@ -85,7 +84,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "templates")],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -156,10 +155,10 @@ SITE_ID = 1
 
 STATIC_URL = "/static/"
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+MEDIA_ROOT = BASE_DIR / "media/"
 
 # django-allauth
 ACCOUNT_EMAIL_REQUIRED = True
