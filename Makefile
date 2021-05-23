@@ -5,7 +5,7 @@ local:
 
 deploy:
 	poetry export -f requirements.txt --output requirements.txt --without-hashes
-	git commit -q -a -m "deploy"
+	git commit -q -a -m "deploy" 2>&1 1>/dev/null
 	git push
 	git push heroku master
 
