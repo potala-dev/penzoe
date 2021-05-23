@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block head_title %}Let's Test Your Tibetan{% endblock %}
 
 {# Empty the message block so that messages are consumed but not displayed. #}
@@ -7,6 +8,7 @@
 {% block main %}
 <div class="hero px-4 py-5 text-center">
     <h1 class="display-5 fw-bold">Build Your Vocabulary with Personalized Tests</h1>
+    <img class="d-block mx-auto" src="{% static 'troffe.svg' %}" alt="Winning Troffe" width="300", height="200" style="fill: #0d6efd">
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">
            Tests are generated based on your proficiency level using the <a href="https://en.wikipedia.org/wiki/Spaced_repetition">Space Repetition</a> algorithm.
