@@ -1,1 +1,1 @@
-python manage.py runserver --settings=project.settings.development
+python manage.py runserver --settings=config.settings.local
