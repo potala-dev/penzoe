@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     "penzoe.books",
     "penzoe.discourse",
     "penzoe.words",
+    "penzoe.quiz",
 ]
 
 
