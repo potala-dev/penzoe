@@ -1,8 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
-from penzoe.books.models import Book
-
 from .forms import CommentForm, ThreadForm
 from .models import Comment, Thread
 
@@ -26,10 +24,7 @@ def create_thread(request, id):
         form = ThreadForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            book = Book.objects.get(pk=id)
-            thread = Thread(
-                user=request.user, book=book, title=cd["title"], body=cd["body"]
-            )
+            thread = Thread(user=request.user, title=cd["title"], body=cd["body"])
             thread.save()
             return redirect(thread)
 

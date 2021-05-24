@@ -3,14 +3,11 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 
-from penzoe.books.models import Book
-
 
 class Thread(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True
     )
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     body = models.TextField(blank=True, null=True)
     created = models.DateTimeField(editable=False)

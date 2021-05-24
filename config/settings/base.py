@@ -60,7 +60,6 @@ INSTALLED_APPS = [
     # Local
     "penzoe.core",
     "penzoe.users",
-    "penzoe.books",
     "penzoe.discourse",
     "penzoe.words",
     "penzoe.quiz",
