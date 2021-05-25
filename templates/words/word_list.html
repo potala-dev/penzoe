@@ -1,0 +1,15 @@
+
+{% extends 'base.html' %}
+{% block head_title %} Your words {% endblock %}
+
+{% block main %}
+
+<h1 class="text-center mt-3"> Your words</h1>
+
+<div class="d-flex mt-3 p-3  justify-content-around flex-wrap">
+    {% for word in words %}
+        <a href="{{ word.get_absolute_url }}" class="p-3 border bg-light text-center lead text-decoration-none text-dark">{{ word.form }}</a>
+    {% endfor %}
+</div>
+
+{% endblock %}

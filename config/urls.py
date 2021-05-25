@@ -12,8 +12,9 @@ class CustomPasswordChangeView(PasswordChangeView):
 urlpatterns = [
     path(settings.ADMIN_PATH + "/", admin.site.urls),
     path("", include("penzoe.core.urls")),
-    path("users/", include("penzoe.users.urls")),
-    path("discourse/", include("penzoe.discourse.urls")),
+    path("words/", include("penzoe.words.urls", namespace="words")),
+    path("users/", include("penzoe.users.urls", namespace="users")),
+    path("discourse/", include("penzoe.discourse.urls", namespace="discourse")),
     path(
         "accounts/password/change/",
         CustomPasswordChangeView.as_view(),

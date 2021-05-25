@@ -33,7 +33,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="words">Words</a>
+          <a class="nav-link" href="{% url 'words:list' %}">Words</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="vocabulary-test">Grammar</a>
@@ -46,7 +46,7 @@
       <a class="p-2 text-light" href="/accounts/login/">Log In</a>
       <a class="btn btn-primary" href="/accounts/signup/">Sign Up</a>
       {% else %}
-      <a class="p-3 link-info" href="{% url 'user_profile' %}"
+      <a class="p-3 link-info" href="{% url 'users:profile' %}"
         >{{ request.user.username }}</a
       >
       <a class="p-2 text-light" href="/accounts/logout/">Logout</a>

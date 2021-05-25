@@ -1,7 +1,6 @@
-from enum import auto
-
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 
@@ -21,5 +20,5 @@ class Word(models.Model):
     def __str__(self):
         return self.form
 
-    class Meta:
-        ordering = ["form"]
+    def get_absolute_url(self):
+        return reverse("words:detail", kwargs={"pk": self.pk})
