@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block head_title %} MCQ {% endblock %}
+
+{% block main %}
+<div class="d-flex flex-column align-items-center">
+    <h1 class="mb-2">Choose the correct spelling</h1>
+    <div class="question h1">
+        <span>{{ left_context }}</span><span>________</span><span>{{ right_context }}</span>
+    </div>
+    <div class="choices row g-3 g-md-5 mt-3">
+    {% for choice in choices %}
+        <div class="col-6">
+            <div class="text-center h4 border bg-light p-2">{{ choice }}</div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock main %}

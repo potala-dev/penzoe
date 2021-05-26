@@ -13,6 +13,7 @@ urlpatterns = [
     path(settings.ADMIN_PATH + "/", admin.site.urls),
     path("", include("penzoe.core.urls")),
     path("words/", include("penzoe.words.urls", namespace="words")),
+    path("quiz/", include("penzoe.quiz.urls", namespace="quiz")),
     path("users/", include("penzoe.users.urls", namespace="users")),
     path("discourse/", include("penzoe.discourse.urls", namespace="discourse")),
     path(

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-auto">
   <div class="container">
     <a class="navbar-brand" href="{% url 'core:index' %}">Penzoe</a>
     <button
@@ -26,7 +26,7 @@
             Quiz
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="spelling-test">Spelling</a></li>
+            <li><a class="dropdown-item" href="{% url 'quiz:spelling-mcq' 'C1' %}">Spelling</a></li>
             <li>
               <a class="dropdown-item" href="vocabulary-test">Vocabulary</a>
             </li>
