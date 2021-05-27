@@ -2,17 +2,45 @@
 {% block head_title %} MCQ {% endblock %}
 
 {% block main %}
-<div class="d-flex flex-column align-items-center">
+<input type="hidden" id="level" name="level" value={{ level }}>
+<div id="mcq" class="d-flex flex-column align-items-center">
     <h1 class="mb-2">Choose the correct spelling</h1>
     <div class="question h1">
-        <span>{{ left_context }}</span><span>________</span><span>{{ right_context }}</span>
+        <span>[[ left_context ]]</span><span>_____</span><span>[[ right_context ]]</span>
     </div>
     <div class="choices row g-3 g-md-5 mt-3">
-    {% for choice in choices %}
-        <div class="col-6">
-            <div class="text-center h4 border bg-light p-2">{{ choice }}</div>
+        <div class="col-6" v-for="choice in choices">
+            <div class="text-center h4 border bg-light p-2" @click="check(choice)">[[ choice ]]</div>
         </div>
-    {% endfor %}
     </div>
 </div>
+
+<script>
+
+var app = new Vue({
+    delimiters: ["[[", "]]"],
+    el: "#mcq",
+    data: {
+        level: "",
+        left_context: "left_context",
+        right_context: "right_context",
+        choices: [1, 2, 3, 4],
+        right_choice: 1
+    },
+
+    methods: {
+        check(choice) {
+            console.log(choice)
+        }
+    },
+
+    mounted() {
+        console.log(this.level)
+    },
+
+    created() {
+        this.level = document.getElementById("level").value
+    }
+})
+</script>
 {% endblock main %}
