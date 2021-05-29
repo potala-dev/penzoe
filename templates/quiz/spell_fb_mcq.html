@@ -13,6 +13,12 @@
             <div class="text-center h4 border bg-light p-2" @click="check(choice)">[[ choice ]]</div>
         </div>
     </div>
+
+    <div v-if="showResult" class="mt-5">
+        <div class="display-2":style="{ color: result.color }">[[ result.message ]]</div>
+    </div>
+
+    <button v-if="showResult" class="btn btn-primary mt-5" @click="getNextMCQ">Next</div>
 </div>
 
 <script>
@@ -21,7 +27,9 @@ var app = new Vue({
     delimiters: ["[[", "]]"],
     el: "#mcq",
     data: {
-        mcq: {}
+        mcq: {},
+        result: {},
+        showResult: false
     },
 
     computed: {
@@ -32,8 +40,18 @@ var app = new Vue({
 
     methods: {
         check(choice) {
-            console.log(choice === this.mcq.correct_choice)
-            this.getNextMCQ()
+            if (choice === this.mcq.correct_choice) {
+                this.result = {
+                    message: "Correct",
+                    color: "green"
+                }
+            } else {
+                this.result = {
+                    message: "Incorrect",
+                    color: "red"
+                }
+            }
+            this.showResult = true
         },
 
         async getNextMCQ() {
