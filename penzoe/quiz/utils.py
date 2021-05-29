@@ -42,7 +42,7 @@ def get_sentence_with_correct_spelling_choices(level: str):
     sentence_content = get_content(sentence_url)
     l_context, word, r_context = parse_sentence_content(sentence_content)
     choices = generate_misspells(word)
-    return l_context, r_context, choices
+    return l_context, r_context, choices, word
 
 
 if __name__ == "__main__":

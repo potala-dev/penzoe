@@ -22,6 +22,7 @@ urlpatterns = [
         name="account_password_change",
     ),
     path("accounts/", include("allauth.urls")),
+    path("api/", include("config.api_router")),
 ]
 
 if settings.DEBUG:

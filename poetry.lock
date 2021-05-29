@@ -234,6 +234,17 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "djangorestframework"
+version = "3.12.4"
+description = "Web APIs for Django, made easy."
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+django = ">=2.2"
+
+[[package]]
 name = "factory-boy"
 version = "3.2.0"
 description = "A versatile test fixtures replacement based on thoughtbot's factory_bot for Ruby."
@@ -740,7 +751,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "3fc20a16feb514faa40646078f567c50188111d7bbe4ad5ff9f4f98830b466e0"
+content-hash = "4fddfe3049d206ec1d03befca01ddc82c792f301c7123a3939fc4c298601c9fb"
 
 [metadata.files]
 appdirs = [
@@ -878,6 +889,10 @@ django-heroku = [
 ]
 django-test-plus = [
     {file = "django-test-plus-1.4.0.tar.gz", hash = "sha256:9c3ca75f9ebb0b72d0a16e98b6d80e94b3d0ff007be5fc946d16b423b808bf16"},
+]
+djangorestframework = [
+    {file = "djangorestframework-3.12.4-py3-none-any.whl", hash = "sha256:6d1d59f623a5ad0509fe0d6bfe93cbdfe17b8116ebc8eda86d45f6e16e819aaf"},
+    {file = "djangorestframework-3.12.4.tar.gz", hash = "sha256:f747949a8ddac876e879190df194b925c177cdeb725a099db1460872f7c0a7f2"},
 ]
 factory-boy = [
     {file = "factory_boy-3.2.0-py2.py3-none-any.whl", hash = "sha256:1d3db4b44b8c8c54cdd8b83ae4bdb9aeb121e464400035f1f03ae0e1eade56a4"},
