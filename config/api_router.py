@@ -15,4 +15,4 @@ app_name = "api"
 urlpatterns = router.urls
 
 # register non viewset
-urlpatterns += [path("spellquiz/", views.SpellFBMCQView.as_view(), name="spellquiz")]
+urlpatterns += [path("quiz/spellmcq/", views.SpellFBMCQView.as_view())]

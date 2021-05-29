@@ -6,10 +6,10 @@
 <div id="mcq" class="d-flex flex-column align-items-center">
     <h1 class="mb-2">Choose the correct spelling</h1>
     <div class="question h1">
-        <span>[[ left_context ]]</span><span>_____</span><span>[[ right_context ]]</span>
+        <span>[[ mcq.left_context ]]</span><span>_____</span><span>[[ mcq.right_context ]]</span>
     </div>
     <div class="choices row g-3 g-md-5 mt-3">
-        <div class="col-6" v-for="choice in choices">
+        <div class="col-6" v-for="choice in mcq.choices">
             <div class="text-center h4 border bg-light p-2" @click="check(choice)">[[ choice ]]</div>
         </div>
     </div>
@@ -21,26 +21,30 @@ var app = new Vue({
     delimiters: ["[[", "]]"],
     el: "#mcq",
     data: {
-        level: "",
-        left_context: "left_context",
-        right_context: "right_context",
-        choices: [1, 2, 3, 4],
-        right_choice: 1
+        mcq: {}
+    },
+
+    computed: {
+        level() {
+            return document.getElementById("level").value
+        }
     },
 
     methods: {
         check(choice) {
-            console.log(choice)
-        }
+            console.log(choice === this.mcq.correct_choice)
+            this.getNextMCQ()
+        },
+
+        async getNextMCQ() {
+            const response = await axios.get("/api/quiz/spellmcq/", { params: { level: this.level } })
+            this.mcq = response.data
+        },
     },
 
     mounted() {
-        console.log(this.level)
+        this.getNextMCQ()
     },
-
-    created() {
-        this.level = document.getElementById("level").value
-    }
 })
 </script>
 {% endblock main %}
