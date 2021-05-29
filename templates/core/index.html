@@ -14,28 +14,28 @@
            Tests are generated based on your proficiency level using the <a href="https://en.wikipedia.org/wiki/Spaced_repetition">Space Repetition</a> algorithm.
            <span class="text-muted">You can also track your progress and share with others.</span>
       </p>
-      <button type="button" class="cta btn btn-primary btn-lg px-4">Take the Test Now</button>
+      <a href="{% url 'quiz:spelling-mcq' 'C1' %}" class="cta btn btn-primary btn-lg px-4" >Take the Test Now</a>
     </div>
 </div>
 <div class="features container">
     <div class="row">
         <div class="col-12 col-md-6">
             <div class="card border-dark mb-3">
-                <div class="card-header bg-dark text-light text-center h1">Vocabulary Test</div>
+                <div class="card-header bg-dark text-light text-center h1">Spelling Test</div>
                 <div class="card-body">
                     <p class="card-text">
-                        Discover your Tibetan vocabulary in 10 minutes! After completion, you will be advised of the number of Tibetan words you know.
+                        Practice your spelling by trying our exercises. Each sentence introduces you to one new word and one that your not confident with - a steady way to build your vocabulary.
                     </p>
-                    <a href="#" class="btn btn-primary stretched-link">Start here</a>
+                    <a href="{% url 'quiz:spelling-mcq' 'C1' %}" class="btn btn-primary stretched-link">Start here</a>
                 </div>
             </div>
         </div>
         <div class="col-12 col-md-6">
             <div class="card border-dark mb-3">
-                <div class="card-header bg-dark text-light text-center h1">Spelling Test</div>
+                <div class="card-header bg-dark text-light text-center h1">Vocabulary Test</div>
                 <div class="card-body">
                     <p class="card-text">
-                        Practice your spelling by trying our exercises. Each sentence introduces you to one new word and one that your not confident with - a steady way to build your vocabulary.
+                        Discover your Tibetan vocabulary in 10 minutes! After completion, you will be advised of the number of Tibetan words you know.
                     </p>
                     <a href="#" class="btn btn-primary stretched-link">Start here</a>
                 </div>
