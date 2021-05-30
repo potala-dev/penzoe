@@ -4,18 +4,17 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 
-class Confidence(models.TextChoices):
-    Good = "G", _("Good")
-    Average = "A", _("Average")
-    Bad = "B", _("Bad")
-
-
 class Word(models.Model):
-    form = models.CharField(max_length=20)
-    confidence = models.CharField(max_length=1, choices=Confidence.choices)
-    learning_started = models.DateTimeField(auto_now_add=True)
-    last_revised = models.DateTimeField(auto_now=True)
+    form = models.CharField(_("Word form"), max_length=20)
     user = models.ManyToManyField(settings.AUTH_USER_MODEL)
+
+    # SuperMemo2 params
+    learning_started = models.DateTimeField(_("Started learning"), auto_now_add=True)
+    last_review = models.DateTimeField(_("Last review"), auto_now=True)
+    repetitions = models.IntegerField(_("Repetitions"), null=True)
+    easiness = models.FloatField("Easiness", null=True)
+    next_review = models.DateField("Next review", null=True)
+    interval = models.IntegerField("Next review interval", null=True)
 
     def __str__(self):
         return self.form
