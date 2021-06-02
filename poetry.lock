@@ -66,7 +66,7 @@ version = "0.0.6"
 description = "Generates misspelled tibetan word of a given word"
 category = "main"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.6"
 
 [package.dependencies]
 botok = ">=0.8.6,<8.0"
