@@ -1,6 +1,7 @@
 import random
 
 import requests
+from bomisspell import get_misspelled_word
 
 sentences_url = (
     "https://raw.githubusercontent.com/potala-dev/object-storage/main/sentences"
@@ -28,10 +29,13 @@ def parse_sentence_content(content: str) -> tuple:
     return left_context, words[candidate_word_idx], right_context
 
 
-def generate_misspells(word):
-    misspells = ["mispell-1", "misspell-2", "misspell-3", word]
-    random.shuffle(misspells)
-    return misspells
+def _pick_four(choices):
+    correct_choice = choices[0]
+    incorrect_choices = random.choices(choices[1:], k=3)
+    print(incorrect_choices)
+    choices = incorrect_choices + [correct_choice]
+    random.shuffle(choices)
+    return choices
 
 
 def get_sentence_with_correct_spelling_choices(level: str):
@@ -41,8 +45,8 @@ def get_sentence_with_correct_spelling_choices(level: str):
     sentence_url = level_url + f"/{sentence_id}.txt"
     sentence_content = get_content(sentence_url)
     l_context, word, r_context = parse_sentence_content(sentence_content)
-    choices = generate_misspells(word)
-    return l_context, r_context, choices, word
+    choices = get_misspelled_word(word)
+    return l_context, r_context, _pick_four(choices), word
 
 
 if __name__ == "__main__":

@@ -61,6 +61,30 @@ d = ["aiohttp (>=3.6.0)", "aiohttp-cors"]
 python2 = ["typed-ast (>=1.4.2)"]
 
 [[package]]
+name = "bomisspell"
+version = "0.0.6"
+description = "Generates misspelled tibetan word of a given word"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+botok = ">=0.8.6,<8.0"
+pylibyaml = ">=0.1.0,<2.0"
+
+[[package]]
+name = "botok"
+version = "0.8.6"
+description = "Tibetan Word Tokenizer"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+pyyaml = "*"
+requests = "*"
+
+[[package]]
 name = "certifi"
 version = "2020.12.5"
 description = "Python package for providing Mozilla's CA Bundle."
@@ -524,6 +548,14 @@ docs = ["sphinx", "sphinx-rtd-theme", "zope.interface"]
 tests = ["pytest (>=6.0.0,<7.0.0)", "coverage[toml] (==5.0.4)"]
 
 [[package]]
+name = "pylibyaml"
+version = "0.1.0"
+description = "Speed up PyYAML by automatically enabling LibYAML bindings."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "pyparsing"
 version = "2.4.7"
 description = "Python parsing module"
@@ -605,7 +637,7 @@ python-versions = "*"
 name = "pyyaml"
 version = "5.4.1"
 description = "YAML parser and emitter for Python"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
 
@@ -762,7 +794,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "6da3402bd536993bcd905e2f7b757e19de17416838422a10e01a034421853b1f"
+content-hash = "3ff15cbfaaee5354027f3cfd05d41c63aaf1970e4361591c2db32960598b15b5"
 
 [metadata.files]
 appdirs = [
@@ -784,6 +816,14 @@ attrs = [
 black = [
     {file = "black-21.5b1-py3-none-any.whl", hash = "sha256:8a60071a0043876a4ae96e6c69bd3a127dad2c1ca7c8083573eb82f92705d008"},
     {file = "black-21.5b1.tar.gz", hash = "sha256:23695358dbcb3deafe7f0a3ad89feee5999a46be5fec21f4f1d108be0bcdb3b1"},
+]
+bomisspell = [
+    {file = "bomisspell-0.0.6-py3-none-any.whl", hash = "sha256:c3d345a292c03385298549ed41071783b71aa10e6d445ffb95f08044ea006dc3"},
+    {file = "bomisspell-0.0.6.tar.gz", hash = "sha256:4d0807ce95ac7d2d79156bd0a60e851c1692de20c99904aee2fe234adf1a8e96"},
+]
+botok = [
+    {file = "botok-0.8.6-py3-none-any.whl", hash = "sha256:3afe1455a1a9e0160e41fec33d074f0642c85307e0a11c7f1389a9c40ee755de"},
+    {file = "botok-0.8.6.tar.gz", hash = "sha256:151219f6049de8f05a8c0b2304ac2c606a38d8b60bb0dd3e75fed8a763b220e3"},
 ]
 certifi = [
     {file = "certifi-2020.12.5-py2.py3-none-any.whl", hash = "sha256:719a74fb9e33b9bd44cc7f3a8d94bc35e4049deebe19ba7d8e108280cfd59830"},
@@ -1063,6 +1103,9 @@ pygraphviz = [
 pyjwt = [
     {file = "PyJWT-2.1.0-py3-none-any.whl", hash = "sha256:934d73fbba91b0483d3857d1aff50e96b2a892384ee2c17417ed3203f173fca1"},
     {file = "PyJWT-2.1.0.tar.gz", hash = "sha256:fba44e7898bbca160a2b2b501f492824fc8382485d3a6f11ba5d0c1937ce6130"},
+]
+pylibyaml = [
+    {file = "pylibyaml-0.1.0.tar.gz", hash = "sha256:3b58dea061903c04689e35fab63ec149f7cf5e82f0808bd3425fb3ab3950623e"},
 ]
 pyparsing = [
     {file = "pyparsing-2.4.7-py2.py3-none-any.whl", hash = "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"},
