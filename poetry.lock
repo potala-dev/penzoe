@@ -62,7 +62,7 @@ python2 = ["typed-ast (>=1.4.2)"]
 
 [[package]]
 name = "bomisspell"
-version = "0.0.6"
+version = "0.0.7"
 description = "Generates misspelled tibetan word of a given word"
 category = "main"
 optional = false
@@ -794,7 +794,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "3ff15cbfaaee5354027f3cfd05d41c63aaf1970e4361591c2db32960598b15b5"
+content-hash = "4e06f5225900f21c433d8b65efa92188be72523dffdd877106546ceb8cb64fb5"
 
 [metadata.files]
 appdirs = [
@@ -818,8 +818,8 @@ black = [
     {file = "black-21.5b1.tar.gz", hash = "sha256:23695358dbcb3deafe7f0a3ad89feee5999a46be5fec21f4f1d108be0bcdb3b1"},
 ]
 bomisspell = [
-    {file = "bomisspell-0.0.6-py3-none-any.whl", hash = "sha256:c3d345a292c03385298549ed41071783b71aa10e6d445ffb95f08044ea006dc3"},
-    {file = "bomisspell-0.0.6.tar.gz", hash = "sha256:4d0807ce95ac7d2d79156bd0a60e851c1692de20c99904aee2fe234adf1a8e96"},
+    {file = "bomisspell-0.0.7-py3-none-any.whl", hash = "sha256:aef9a38ecff12c5935742ee5e26a75ed2828c244051520e295d6f27b7e7567f6"},
+    {file = "bomisspell-0.0.7.tar.gz", hash = "sha256:ceca620bd99fde6df1fa8ee344698b3279bd61b23c63f5da9e921e7472b7b94a"},
 ]
 botok = [
     {file = "botok-0.8.6-py3-none-any.whl", hash = "sha256:3afe1455a1a9e0160e41fec33d074f0642c85307e0a11c7f1389a9c40ee755de"},
