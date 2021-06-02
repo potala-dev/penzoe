@@ -57,6 +57,8 @@ var app = new Vue({
         async getNextMCQ() {
             const response = await axios.get("/api/quiz/spellmcq/", { params: { level: this.level } })
             this.mcq = response.data
+            this.result = {}
+            this.showResult = false
         },
     },
 

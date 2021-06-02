@@ -32,7 +32,6 @@ def parse_sentence_content(content: str) -> tuple:
 def _pick_four(choices):
     correct_choice = choices[0]
     incorrect_choices = random.choices(choices[1:], k=3)
-    print(incorrect_choices)
     choices = incorrect_choices + [correct_choice]
     random.shuffle(choices)
     return choices
