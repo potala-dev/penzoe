@@ -29,10 +29,10 @@ def parse_sentence_content(content: str) -> tuple:
     return left_context, words[candidate_word_idx], right_context
 
 
-def _pick_four(choices):
-    correct_choice = choices[0]
+def get_choices(word):
+    choices = get_misspelled_word(word)
     incorrect_choices = random.choices(choices[1:], k=3)
-    choices = incorrect_choices + [correct_choice]
+    choices = incorrect_choices + [word]
     random.shuffle(choices)
     return choices
 
@@ -44,8 +44,8 @@ def get_sentence_with_correct_spelling_choices(level: str):
     sentence_url = level_url + f"/{sentence_id}.txt"
     sentence_content = get_content(sentence_url)
     l_context, word, r_context = parse_sentence_content(sentence_content)
-    choices = get_misspelled_word(word)
-    return l_context, r_context, _pick_four(choices), word
+    choices = get_choices(word)
+    return l_context, r_context, choices, word
 
 
 if __name__ == "__main__":
